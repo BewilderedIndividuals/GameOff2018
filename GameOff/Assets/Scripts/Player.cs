@@ -44,7 +44,15 @@ public class Player : MonoBehaviour
 			Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1f);
 			if (hit.transform.GetComponent<IInteractable>() != null)
 			{
-				hit.transform.GetComponent<IInteractable>().Interact(heldItem);
+				Item interactItem = hit.transform.GetComponent<IInteractable>().Interact(heldItem);
+				if (interactItem == null)
+				{
+					heldItem = null;
+				}
+				else
+				{
+					heldItem = interactItem;
+				}
 			}
 
 
