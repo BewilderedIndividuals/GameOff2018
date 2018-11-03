@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour, IInteractable
 {
+
+
     public Type type;
 
     public void Interact()

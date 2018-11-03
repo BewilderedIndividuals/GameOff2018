@@ -4,10 +4,26 @@ using UnityEngine;
 
 public class Creator : MonoBehaviour, IInteractable
 {
-    public Item.Type itemCreated;
 
-    public void Interact()
+    public Item prefab;
+
+    [HideInInspector]
+    public Item createdItem;
+
+    public Item Interact(Item item = null)
     {
-        throw new System.NotImplementedException();
+        if(createdItem == null)
+        {
+            createdItem = Instantiate(prefab);
+        }
+
+        if(item == null)
+        {
+            var temp = createdItem;
+            createdItem = null;
+            return temp;
+        }
+
+        return item;
     }
 }
