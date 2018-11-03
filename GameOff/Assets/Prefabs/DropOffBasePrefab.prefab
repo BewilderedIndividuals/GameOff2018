@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4626451366593729159}
   - component: {fileID: 3502214857506562770}
   - component: {fileID: 2682112644160798166}
-  - component: {fileID: 8277395849668786772}
   m_Layer: 0
   m_Name: DropOffBasePrefab
   m_TagString: Untagged
@@ -105,18 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87da2b9c20524c44b1e7e039f45f66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentObjective: {fileID: 8277395849668786772}
---- !u!114 &8277395849668786772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8121731896757874260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c90062fb47bf14fb7b34ce30362aa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemRequired: 0
-  count: 5
+  currentObjective:
+    itemTypeRequired: 0
+    count: 10

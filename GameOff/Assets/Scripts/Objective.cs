@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Objective : MonoBehaviour
+[System.Serializable]
+public class Objective
 {
-    public Item.Type itemRequired;
+    public Item.Type itemTypeRequired;
     public int count;
 
+    public Objective(Item.Type itemRequired, int count)
+    {
+        this.itemTypeRequired = itemRequired;
+        this.count = count;
+    }
 }
