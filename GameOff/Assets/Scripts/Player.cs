@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
 	private void ItemInteraction()
 	{
-		if (Input.GetButton(buttonString))
+		if (Input.GetButtonDown(buttonString))
 		{
 
 			Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1f);

@@ -36,7 +36,7 @@ public class Manipulator : MonoBehaviour, IInteractable
 
             //Stops the processing
             StopAllCoroutines();
-            return temp;
+            return temp.ToItem(temp.type);
         }
 
         //Default return
