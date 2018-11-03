@@ -11,15 +11,15 @@ public class Manipulator : MonoBehaviour, IInteractable
     [HideInInspector]
     public Item manipulatorItem;
 
-    public Item Interact(Item item = null)
+    public Item Interact(Item heldItem = null)
     {
         //Check if item needs to be dropped off
-        if(item != null && manipulatorItem == null)
+        if(heldItem != null && manipulatorItem == null)
         {
             //Check if the item to be dropped off fits the types of this manipulator
-            if(InputItemContains(item.type))
+            if(InputItemContains(heldItem.type))
             {
-                manipulatorItem = item;
+                manipulatorItem = heldItem;
 
                 //Starts processing the item
                 ProcessItem();
@@ -29,7 +29,7 @@ public class Manipulator : MonoBehaviour, IInteractable
             }
         }
         //Check if item needs to be picked up
-        else if(item == null && manipulatorItem != null)
+        else if(heldItem == null && manipulatorItem != null)
         {
             var temp = manipulatorItem;
             manipulatorItem = null;
@@ -40,7 +40,7 @@ public class Manipulator : MonoBehaviour, IInteractable
         }
 
         //Default return
-        return item; 
+        return heldItem; 
     }
 
     bool InputItemContains(Item.Type type)

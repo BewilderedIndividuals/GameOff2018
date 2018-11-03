@@ -10,20 +10,20 @@ public class Creator : MonoBehaviour, IInteractable
     [HideInInspector]
     public Item createdItem;
 
-    public Item Interact(Item item = null)
+    public Item Interact(Item heldItem = null)
     {
         if(createdItem == null)
         {
             createdItem = Instantiate(prefab);
         }
 
-        if(item == null)
+        if(heldItem == null)
         {
             var temp = createdItem;
             createdItem = null;
             return temp;
         }
 
-        return item;
+        return heldItem;
     }
 }
