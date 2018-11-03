@@ -22,7 +22,7 @@ public class Manipulator : MonoBehaviour, IInteractable
                 manipulatorItem = heldItem;
 
                 //Starts processing the item
-                ProcessItem();
+                StartCoroutine( ProcessItem());
 
                 //Returns a non-null item to signify success
                 return null;
@@ -43,7 +43,8 @@ public class Manipulator : MonoBehaviour, IInteractable
         return heldItem; 
     }
 
-    bool InputItemContains(Item.Type type)
+
+	bool InputItemContains(Item.Type type)
     {
         foreach(var t in inputItems)
         {
@@ -55,6 +56,7 @@ public class Manipulator : MonoBehaviour, IInteractable
     IEnumerator ProcessItem()
     {
         yield return new WaitForSeconds(operationTime);
-        manipulatorItem.type = outputItem;
+        manipulatorItem = manipulatorItem.ToItem(outputItem);
+		Debug.Log("Ding!");
     }
 }
