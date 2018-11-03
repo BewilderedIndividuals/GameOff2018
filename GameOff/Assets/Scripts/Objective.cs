@@ -5,12 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Objective
 {
-    public Item.Type itemTypeRequired;
+    public Item itemRequired;
     public int count;
-
-    public Objective(Item.Type itemRequired, int count)
-    {
-        this.itemTypeRequired = itemRequired;
-        this.count = count;
-    }
 }

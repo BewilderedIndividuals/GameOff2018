@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createdItemGO: {fileID: 6375008129276880536}
-  type: 0
+  itemToCreate: {fileID: 11400000, guid: edc617feeffe57241bb7bd6d4cd8a92d, type: 2}
 --- !u!1001 &3446888505494235101
 PrefabInstance:
   m_ObjectHideFlags: 0

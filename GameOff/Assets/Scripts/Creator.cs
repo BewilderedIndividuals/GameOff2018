@@ -5,7 +5,7 @@ using UnityEngine;
 public class Creator : MonoBehaviour, IInteractable
 {
     public ItemGO createdItemGO;
-    public Item.Type type;
+    public Item itemToCreate;
 
     public Item Interact(Item heldItem = null)
     {
@@ -21,17 +21,12 @@ public class Creator : MonoBehaviour, IInteractable
             }
             else
             {
-                return MyItem();
+                return itemToCreate;
             }
         }
 
         // else an item should be produced
-        createdItemGO.SetItem(MyItem());
+        createdItemGO.SetItem(itemToCreate);
         return heldItem;
-    }
-
-    public Item MyItem()
-    {
-        return ItemExtensions.instance.TypeToItem(type);
     }
 }

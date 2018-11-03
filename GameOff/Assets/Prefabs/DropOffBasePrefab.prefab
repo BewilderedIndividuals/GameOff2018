@@ -105,5 +105,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentObjective:
-    itemTypeRequired: 0
+    itemRequired: {fileID: 11400000, guid: dc233230118a40d42bb8929daac79030, type: 2}
     count: 10

@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class Manipulator : MonoBehaviour, IInteractable
 {
-    public Item.Type[] inputItems;
-    public Item.Type outputItem; //TODO Maybe more items?
+    public ItemGO manipulatorItemGO;
+    
+    public Item[] inputItems;
+    public Item outputItem; //TODO Maybe more items?
     public float operationTime = 5.0f;
-
-    [HideInInspector]
-    public Item manipulatorItem;
+    
 
     public Item Interact(Item heldItem = null)
     {
         //Check if item needs to be dropped off
-        if(heldItem != null && manipulatorItem == null)
+        if(heldItem != null && !IsProcessing())
         {
             //Check if the item to be dropped off fits the types of this manipulator
             if(InputItemContains(heldItem.type))
             {
-                manipulatorItem = heldItem;
+                manipulatorItemGO.SetItem(heldItem);
 
                 //Starts processing the item
                 StartCoroutine( ProcessItem());
 
-                //Returns a non-null item to signify success
+                //Returns a null item to signify success
                 return null;
             }
         }
         //Check if item needs to be picked up
-        else if(heldItem == null && manipulatorItem != null)
+        else if(heldItem == null && IsProcessing())
         {
-            var temp = manipulatorItem;
-            manipulatorItem = null;
+            var temp = manipulatorItemGO.GetItem();
+            manipulatorItemGO.SetItem(null);
 
             //Stops the processing
             StopAllCoroutines();
@@ -43,12 +43,17 @@ public class Manipulator : MonoBehaviour, IInteractable
         return heldItem; 
     }
 
+    bool IsProcessing()
+    {
+        return manipulatorItemGO.GetItem() != null;
+    }
+
 
 	bool InputItemContains(Item.Type type)
     {
         foreach(var t in inputItems)
         {
-            if (t == type) return true;
+            if (t.type == type) return true;
         }
         return false;
     }
@@ -56,7 +61,7 @@ public class Manipulator : MonoBehaviour, IInteractable
     IEnumerator ProcessItem()
     {
         yield return new WaitForSeconds(operationTime);
-        manipulatorItem = manipulatorItem.ToItem(outputItem);
+        manipulatorItemGO.SetItem(outputItem);
 		Debug.Log("Ding!");
     }
 }

@@ -8,7 +8,7 @@ public class DropOff : MonoBehaviour, IInteractable
 
     public Item Interact(Item heldItem = null)
     {
-        if(heldItem.type == currentObjective.itemTypeRequired)
+        if(heldItem == currentObjective.itemRequired)
         {
             currentObjective.count -= 1;
             return null;
