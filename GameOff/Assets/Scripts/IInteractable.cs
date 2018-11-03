@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 internal interface IInteractable
 {
-    void Interact(Item item = null);
+    bool Interact(Item item = null);
 }
