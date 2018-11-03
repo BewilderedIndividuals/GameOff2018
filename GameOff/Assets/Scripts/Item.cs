@@ -14,6 +14,6 @@ public class Item : MonoBehaviour, IInteractable
 
     public enum Type
     {
-
+        Test
     }
 }

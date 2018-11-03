@@ -41,19 +41,14 @@ public class Player : MonoBehaviour
 		if (Input.GetButton(buttonString))
 		{
 
-			Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1f);
-			if (hit.transform.GetComponent<IInteractable>() != null)
-			{
-				Item interactItem = hit.transform.GetComponent<IInteractable>().Interact(heldItem);
-				if (interactItem == null)
-				{
-					heldItem = null;
-				}
-				else
-				{
-					heldItem = interactItem;
-				}
-			}
+			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1f))
+            {
+                if (hit.transform.GetComponent<IInteractable>() != null)
+                {
+                    print(hit.transform.name);
+                    heldItem = hit.transform.GetComponent<IInteractable>().Interact(heldItem);
+                }
+            }
 
 
 		}
