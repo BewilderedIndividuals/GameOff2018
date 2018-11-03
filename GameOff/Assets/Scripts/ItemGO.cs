@@ -24,6 +24,7 @@ public class ItemGO : MonoBehaviour, IInteractable
 	private void Start()
 	{
 		rend = GetComponent<Renderer>();
+        rend.enabled = false;
 		if(GOItem != null)
 		{
 			SetItem(GOItem);
@@ -33,7 +34,8 @@ public class ItemGO : MonoBehaviour, IInteractable
 	public void SetItem(Item item)
 	{
 		this.GOItem = item;
-		rend.material = item.mat;
+		rend.material = item?.mat ?? rend.material;
+        rend.enabled = item != null;
 
 	}
 

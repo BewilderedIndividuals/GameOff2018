@@ -4,27 +4,34 @@ using UnityEngine;
 
 public class Creator : MonoBehaviour, IInteractable
 {
-
-    public Item prefab;
-    public Transform spawnPoint;
-
-    [HideInInspector]
-    public Item createdItem;
+    public ItemGO createdItemGO;
+    public Item.Type type;
 
     public Item Interact(Item heldItem = null)
     {
-        if(createdItem == null)
-        {
-            createdItem = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-        }
-
+        //Players should receive an item
         if(heldItem == null)
         {
-            var temp = createdItem;
-            createdItem = null;
-            return temp;
+            //Is there already an item here?
+            if(createdItemGO.GetItem()!=null)
+            {
+                var res = createdItemGO.GetItem();
+                createdItemGO.SetItem(null);
+                return res;
+            }
+            else
+            {
+                return MyItem();
+            }
         }
 
+        // else an item should be produced
+        createdItemGO.SetItem(MyItem());
         return heldItem;
+    }
+
+    public Item MyItem()
+    {
+        return ItemExtensions.instance.TypeToItem(type);
     }
 }

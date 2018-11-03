@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public ItemGO heldItemObject;
+
 	Renderer rend;
 	Rigidbody rb;
 
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
                 {
                     print(hit.transform.name);
                     heldItem = hit.transform.GetComponent<IInteractable>().Interact(heldItem);
+                    heldItemObject.SetItem(heldItem);
                 }
             }
 
