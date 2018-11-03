@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-interface IInteractable
+internal interface IInteractable
 {
-    void Interact();
+    void Interact(Item item = null);
 }
