@@ -6,6 +6,7 @@ public class Creator : MonoBehaviour, IInteractable
 {
 
     public Item prefab;
+    public Transform spawnPoint;
 
     [HideInInspector]
     public Item createdItem;
@@ -14,7 +15,7 @@ public class Creator : MonoBehaviour, IInteractable
     {
         if(createdItem == null)
         {
-            createdItem = Instantiate(prefab);
+            createdItem = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         }
 
         if(heldItem == null)
