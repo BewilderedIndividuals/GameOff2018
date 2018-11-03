@@ -16,7 +16,6 @@ public class ItemGO : MonoBehaviour, IInteractable
 		{
 			Item temp = GOItem;
 			GOItem = null;
-			Debug.Log(temp);
 			return temp;
 		}
 		else return null;
