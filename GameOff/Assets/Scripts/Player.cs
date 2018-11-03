@@ -37,7 +37,11 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetButton(buttonString))
 		{
-			throw new NotImplementedException();
+
+			Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1f);
+			//if(hit.transform.GetComponent<>)
+
+
 		}
 	}
 
