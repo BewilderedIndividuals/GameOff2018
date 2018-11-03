@@ -6,9 +6,55 @@ public class Manipulator : MonoBehaviour, IInteractable
 {
     public Item.Type[] inputItems;
     public Item.Type outputItem; //TODO Maybe more items?
+    public float operationTime = 5.0f;
 
-    public void Interact()
+    [HideInInspector]
+    public Item manipulatorItem;
+
+    public Item Interact(Item item = null)
     {
-        throw new System.NotImplementedException();
+        //Check if item needs to be dropped off
+        if(item != null && manipulatorItem == null)
+        {
+            //Check if the item to be dropped off fits the types of this manipulator
+            if(InputItemContains(item.type))
+            {
+                manipulatorItem = item;
+
+                //Starts processing the item
+                ProcessItem();
+
+                //Returns a non-null item to signify success
+                return null;
+            }
+        }
+        //Check if item needs to be picked up
+        else if(item == null && manipulatorItem != null)
+        {
+            var temp = manipulatorItem;
+            manipulatorItem = null;
+
+            //Stops the processing
+            StopAllCoroutines();
+            return temp;
+        }
+
+        //Default return
+        return item; 
+    }
+
+    bool InputItemContains(Item.Type type)
+    {
+        foreach(var t in inputItems)
+        {
+            if (t == type) return true;
+        }
+        return false;
+    }
+
+    IEnumerator ProcessItem()
+    {
+        yield return new WaitForSeconds(operationTime);
+        manipulatorItem.type = outputItem;
     }
 }
