@@ -7,8 +7,7 @@ public class Item : MonoBehaviour, IInteractable
 
 
     public Type type;
-
-    public void Interact()
+    public Item Interact(Item heldItem = null)
     {
         throw new System.NotImplementedException();
     }
